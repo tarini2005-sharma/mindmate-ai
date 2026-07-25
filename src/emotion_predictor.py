@@ -38,7 +38,10 @@ def predict_emotion(text):
 
     confidence = probabilities[best_index]
 
-    return emotion, confidence
+    return emotion, confidence 
+
+    # If the model is very uncertain, classify as neutral
+    
 
 
 if __name__ == "__main__":
