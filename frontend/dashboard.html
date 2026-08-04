@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MindMate — demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --bg: #16232B;
+  --surface: #1E323C;
+  --surface-raised: #24404B;
+  --line: rgba(237,242,240,0.10);
+  --text: #EDF2F0;
+  --text-muted: #9FB4AC;
+  --sage: #8FBFA8;
+  --sage-dim: rgba(143,191,168,0.16);
+  --clay: #E9A87A;
+  --clay-dim: rgba(233,168,122,0.16);
+  --coral: #E8737A;
+  --coral-dim: rgba(232,115,122,0.14);
+  --radius: 14px;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  background: radial-gradient(120% 100% at 20% 0%, #1A2C34 0%, var(--bg) 55%);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  padding: 32px;
+  line-height: 1.5;
+}
+
+.wrap{ max-width: 1180px; margin: 0 auto; }
+
+/* Header */
+header{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-mark{
+  width: 34px; height: 34px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--sage), rgba(143,191,168,0.15) 70%);
+  animation: breathe 6s ease-in-out infinite;
+}
+.brand-name{
+  font-family:'Fraunces', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.2px;
+}
+.brand-sub{ font-size: 12.5px; color: var(--text-muted); margin-top: 1px; }
+
+.header-right{ display:flex; align-items:center; gap: 10px; }
+.safety-chip{
+  display:flex; align-items:center; gap:7px;
+  background: var(--sage-dim); color: var(--sage);
+  border: 1px solid rgba(143,191,168,0.3);
+  padding: 7px 13px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 500;
+}
+.safety-dot{ width:6px; height:6px; border-radius:50%; background: var(--sage); }
+
+/* Layout */
+.grid{
+  display: grid;
+  grid-template-columns: 220px 1fr 280px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr; }
+}
+
+.panel{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.panel-title{
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.09em;
+  color: var(--text-muted); font-weight: 600; margin-bottom: 14px;
+}
+
+/* Left: mood check-in */
+.mood-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom: 22px; }
+.mood-chip{
+  background: var(--surface-raised); border: 1px solid var(--line);
+  border-radius: 10px; padding: 10px 8px; text-align:center;
+  font-size: 12.5px; color: var(--text-muted); cursor: default;
+  transition: border-color 0.15s;
+}
+.mood-chip.active{
+  border-color: var(--sage); color: var(--sage); background: var(--sage-dim);
+}
+
+.history-item{
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 9px 0; border-bottom: 1px solid var(--line);
+  font-size: 12.5px;
+}
+.history-item:last-child{ border-bottom:none; }
+.history-day{ color: var(--text-muted); }
+.history-tag{
+  font-family:'IBM Plex Mono', monospace; font-size: 11px;
+  padding: 2px 7px; border-radius: 5px;
+}
+.tag-anx{ background: var(--clay-dim); color: var(--clay); }
+.tag-lonely{ background: rgba(143,169,191,0.16); color: #8FA9BF; }
+.tag-calm{ background: var(--sage-dim); color: var(--sage); }
+
+.screening-note{
+  margin-top: 18px; font-size: 11.5px; color: var(--text-muted);
+  padding-top: 14px; border-top: 1px solid var(--line);
+}
+.screening-note b{ color: var(--text); font-weight: 500; }
+
+/* Center: chat */
+.chat-panel{ display:flex; flex-direction:column; min-height: 560px; }
+.chat-scroll{ flex:1; display:flex; flex-direction:column; gap: 16px; }
+
+.msg{ max-width: 82%; }
+.msg.user{ align-self:flex-end; }
+.msg.bot{ align-self:flex-start; }
+
+.bubble{
+  padding: 13px 16px; border-radius: 14px; font-size: 14.5px;
+}
+.msg.user .bubble{
+  background: var(--surface-raised); border: 1px solid var(--line);
+  border-bottom-right-radius: 4px;
+}
+.msg.bot .bubble{
+  background: var(--sage-dim); border: 1px solid rgba(143,191,168,0.25);
+  border-bottom-left-radius: 4px;
+}
+
+.analysis-row{
+  display:flex; gap: 6px; flex-wrap: wrap; margin: 8px 2px 0;
+}
+.pill{
+  font-family:'IBM Plex Mono', monospace; font-size: 10.5px;
+  padding: 4px 9px; border-radius: 999px;
+  background: var(--surface-raised); border: 1px solid var(--line); color: var(--text-muted);
+}
+.pill b{ color: var(--text); font-weight: 500; }
+
+.rec-card{
+  margin-top: 10px; background: var(--surface-raised);
+  border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+}
+.rec-label{ font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--clay); font-weight:600; margin-bottom:6px;}
+.rec-title{ font-family:'Fraunces', serif; font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.rec-desc{ font-size: 12.5px; color: var(--text-muted); margin-bottom: 12px; }
+.rec-actions{ display:flex; gap: 8px; }
+.rec-btn{
+  font-size: 12px; padding: 7px 13px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; color: var(--text-muted);
+}
+.rec-btn.primary{ background: var(--sage); border-color: var(--sage); color: #10201A; font-weight: 600; }
+
+.feedback-row{
+  display:flex; align-items:center; gap: 8px; margin-top: 10px; font-size: 12.5px; color: var(--text-muted);
+}
+.feedback-btn{
+  font-size: 11.5px; padding: 5px 11px; border-radius: 999px;
+  border: 1px solid rgba(143,191,168,0.3); background: var(--sage-dim); color: var(--sage);
+}
+
+.chat-input-row{
+  margin-top: 20px; display:flex; align-items:center; gap: 12px;
+  background: var(--surface-raised); border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 8px 8px 18px; position: relative;
+}
+.chat-input-row input{
+  flex:1; background: transparent; border:none; outline:none;
+  color: var(--text); font-family:'Inter'; font-size: 13.5px;
+}
+.chat-input-row input::placeholder{ color: var(--text-muted); }
+.send-btn{
+  width: 36px; height: 36px; border-radius: 50%; border: none;
+  background: var(--sage); color: #10201A; font-size: 15px; cursor: default;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.breath-ring{
+  position:absolute; right: 52px; top:50%; transform: translateY(-50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid var(--sage); opacity: 0.5;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe{
+  0%, 100% { transform: scale(0.85); opacity: 0.55; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+.breath-ring{ animation-name: breathe; }
+.brand-mark{ animation-duration: 6s; }
+
+/* Right: insights */
+.insight-item{ margin-bottom: 16px; }
+.insight-top{ display:flex; justify-content:space-between; font-size: 12.5px; margin-bottom: 6px; }
+.insight-name{ color: var(--text); }
+.insight-score{ font-family:'IBM Plex Mono', monospace; color: var(--text-muted); font-size: 11.5px; }
+.bar-track{ height: 6px; background: var(--surface-raised); border-radius: 999px; overflow:hidden; }
+.bar-fill{ height:100%; border-radius: 999px; background: var(--sage); }
+.bar-fill.mid{ background: var(--clay); }
+.bar-fill.low{ background: rgba(159,180,172,0.5); }
+
+.delta-note{
+  font-size: 11.5px; color: var(--sage); margin-top: 5px;
+}
+
+.insight-divider{ height:1px; background: var(--line); margin: 18px 0; }
+
+.trace-title{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.trace-text{ font-size: 12.5px; color: var(--text); line-height: 1.6; }
+.trace-text b{ color: var(--sage); font-weight: 500; }
+
+footer{
+  margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: 11.5px; color: var(--text-muted); text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <div class="brand-name">MindMate</div>
+        <div class="brand-sub">AI mental-wellness support — not a diagnosis, not an emergency service</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="safety-chip"><span class="safety-dot"></span> Safety layer: clear</div>
+    </div>
+  </header>
+
+  <div class="grid">
+
+    <!-- LEFT: mood check-in -->
+    <div class="panel">
+      <div class="panel-title">Today's check-in</div>
+      <div class="mood-grid">
+        <div class="mood-chip">Calm</div>
+        <div class="mood-chip active">Anxious</div>
+        <div class="mood-chip">Lonely</div>
+        <div class="mood-chip">Stressed</div>
+        <div class="mood-chip">Sad</div>
+        <div class="mood-chip">Overwhelmed</div>
+      </div>
+
+      <div class="panel-title">Recent entries</div>
+      <div class="history-item">
+        <span class="history-day">Today</span>
+        <span class="history-tag tag-anx">anxiety</span>
+      </div>
+      <div class="history-item">
+        <span class="history-day">Yesterday</span>
+        <span class="history-tag tag-lonely">loneliness</span>
+      </div>
+      <div class="history-item">
+        <span class="history-day">Mon</span>
+        <span class="history-tag tag-calm">calm</span>
+      </div>
+      <div class="history-item">
+        <span class="history-day">Sun</span>
+        <span class="history-tag tag-anx">anxiety</span>
+      </div>
+
+      <div class="screening-note">
+        <b>GAD-7 / PHQ-9</b> available as optional screening — results are shown as context, never as a diagnosis.
+      </div>
+    </div>
+
+    <!-- CENTER: chat -->
+    <div class="panel chat-panel">
+      <div class="chat-scroll">
+
+        <div class="msg user">
+          <div class="bubble">I have been feeling very anxious about my future. I can't stop thinking about everything going wrong.</div>
+        </div>
+
+        <div class="msg bot">
+          <div class="bubble">
+            That sounds like a lot to carry right now. It sounds like this could be anxiety, and it seems fairly intense — I'd like to check in before anything else.
+          </div>
+          <div class="analysis-row">
+            <span class="pill">emotion: <b>anxiety</b></span>
+            <span class="pill">anxiety: <b>0.87</b></span>
+            <span class="pill">stress: <b>0.72</b></span>
+            <span class="pill">loneliness: <b>0.32</b></span>
+            <span class="pill">intensity: <b>high</b></span>
+          </div>
+
+          <div class="rec-card">
+            <div class="rec-label">Suggested right now</div>
+            <div class="rec-title">5-4-3-2-1 grounding exercise</div>
+            <div class="rec-desc">Chosen over breathing — grounding has worked best for you during high-intensity anxiety, based on your last 5 check-ins.</div>
+            <div class="rec-actions">
+              <div class="rec-btn primary">Start exercise</div>
+              <div class="rec-btn">Show another option</div>
+            </div>
+          </div>
+
+          <div class="feedback-row">
+            Did this help? <span class="feedback-btn">Yes, significantly</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="chat-input-row">
+        <input type="text" placeholder="Tell MindMate how you're feeling…" />
+        <div class="breath-ring"></div>
+        <button class="send-btn">→</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: personalization insights -->
+    <div class="panel">
+      <div class="panel-title">What's working for you</div>
+
+      <div class="insight-item">
+        <div class="insight-top">
+          <span class="insight-name">Grounding</span>
+          <span class="insight-score">0.86</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:86%"></div></div>
+        <div class="delta-note">↑ 0.06 after today's feedback</div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-top">
+          <span class="insight-name">Breathing</span>
+          <span class="insight-score">0.71</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill mid" style="width:71%"></div></div>
+      </div>
+
+      <div class="insight-item">
+        <div class="insight-top">
+          <span class="insight-name">Journaling</span>
+          <span class="insight-score">0.28</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill low" style="width:28%"></div></div>
+      </div>
+
+      <div class="insight-divider"></div>
+
+      <div class="trace-title">Why this recommendation</div>
+      <div class="trace-text">
+        Anxiety detected at <b>high</b> intensity. Of your past interventions for this state, <b>grounding</b> scored highest (0.86) vs breathing (0.71) and journaling (0.28) — so it was ranked first.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    MindMate offers wellness support and coping suggestions. It does not diagnose conditions and is not a substitute for a licensed professional or emergency service.
+  </footer>
+
+</div>
+</body>
+</html>
