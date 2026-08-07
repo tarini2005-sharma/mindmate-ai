@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindMate Dashboard</title>
+
+    <link rel="stylesheet"
+          href="css/dashboard.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="brand">
+
+            <div class="brand-mark"></div>
+
+            <div>
+
+                <h1 class="brand-name">
+                    <i>MindMate</i>
+                </h1>
+
+                <p class="brand-sub">
+                    AI mental-wellness support — not a diagnosis, not an emergency service
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="safety-chip">
+
+                <span class="safety-dot"></span>
+
+                Safety layer: clear
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <main class="grid">
+
+
+
+
+        <!-- ========================================= -->
+        <!-- LEFT PANEL -->
+        <!-- ========================================= -->
+
+        <aside class="panel">
+
+            <h2 class="panel-title">
+
+                Today's check-in
+
+            </h2>
+
+
+            <div class="mood-grid">
+
+                <button class="mood-chip"
+                        type="button">
+
+                    Calm
+
+                </button>
+
+                <button class="mood-chip active"
+                        type="button">
+
+                    Anxious
+
+                </button>
+
+                <button class="mood-chip"
+                        type="button">
+
+                    Lonely
+
+                </button>
+
+                <button class="mood-chip"
+                        type="button">
+
+                    Stressed
+
+                </button>
+
+                <button class="mood-chip"
+                        type="button">
+
+                    Sad
+
+                </button>
+
+                <button class="mood-chip"
+                        type="button">
+
+                    Overwhelmed
+
+                </button>
+
+            </div>
+
+
+
+
+            <h2 class="panel-title">
+
+                Recent entries
+
+            </h2>
+
+
+            <div id="historyContainer">
+
+                <div class="history-item">
+
+                    <span class="history-day">
+
+                        Today
+
+                    </span>
+
+                    <span class="history-tag tag-anx">
+
+                        anxiety
+
+                    </span>
+
+                </div>
+
+
+                <div class="history-item">
+
+                    <span class="history-day">
+
+                        Yesterday
+
+                    </span>
+
+                    <span class="history-tag tag-lonely">
+
+                        loneliness
+
+                    </span>
+
+                </div>
+
+
+                <div class="history-item">
+
+                    <span class="history-day">
+
+                        Mon
+
+                    </span>
+
+                    <span class="history-tag tag-calm">
+
+                        calm
+
+                    </span>
+
+                </div>
+
+
+                <div class="history-item">
+
+                    <span class="history-day">
+
+                        Sun
+
+                    </span>
+
+                    <span class="history-tag tag-anx">
+
+                        anxiety
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="screening-note">
+
+                <b>
+
+                    GAD-7 / PHQ-9
+
+                </b>
+
+                available as optional screening — results are shown as context, never as a diagnosis.
+
+            </div>
+
+        </aside>
+                <!-- ========================================= -->
+        <!-- CENTER PANEL -->
+        <!-- ========================================= -->
+
+        <section class="panel chat-panel">
+
+            <div class="chat-scroll" id="chatContainer">
+
+                <!-- USER MESSAGE -->
+
+                <div class="msg user">
+
+                    <div class="bubble" id="userMessage">
+
+                        I have been feeling very anxious about my future. I can't stop thinking about everything going wrong.
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- AI RESPONSE -->
+
+                <div class="msg bot">
+
+                    <div class="bubble" id="messageResult">
+
+                        That sounds like a lot to carry right now. It sounds like this could be anxiety, and it seems fairly intense — I'd like to check in before anything else.
+
+                    </div>
+
+
+
+                    <!-- ANALYSIS -->
+
+                    <div class="analysis-row">
+
+                        <span class="pill">
+
+                            emotion:
+                            <b id="emotionResult">
+
+                                anxiety
+
+                            </b>
+
+                        </span>
+
+                        <span class="pill">
+
+                            anxiety:
+                            <b id="anxietyScore">
+
+                                0.87
+
+                            </b>
+
+                        </span>
+
+                       
+
+                        <span class="pill">
+
+                            intensity:
+                            <b id="intensityResult">
+
+                                high
+
+                            </b>
+
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- RECOMMENDATION -->
+
+                    <div class="rec-card">
+
+                        <div class="rec-label">
+
+                            Suggested right now
+
+                        </div>
+
+                        <div
+                            class="rec-title"
+                            id="activityTitle">
+
+                            5-4-3-2-1 grounding exercise
+
+                        </div>
+
+                        <div
+                            class="rec-desc"
+                            id="activityReason">
+
+                            Chosen over breathing — grounding has worked best for you during high-intensity anxiety, based on your last 5 check-ins.
+
+                        </div>
+
+
+
+                        <div class="rec-actions">
+
+                            <button
+                                class="rec-btn primary"
+                                id="startExerciseBtn"
+                                type="button">
+
+                                Start exercise
+
+                            </button>
+
+
+
+                            <button
+                                class="rec-btn"
+                                id="anotherOptionBtn"
+                                type="button">
+
+                                Show another option
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FEEDBACK -->
+
+                    <div class="feedback-row">
+
+                        Did this help?
+
+                        <button
+                            class="feedback-btn"
+                            id="feedbackBtn"
+                            type="button">
+
+                            Yes, significantly
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INPUT -->
+
+            <form
+                id="analyzeForm"
+                class="chat-input-row">
+
+                <input
+
+                    id="emotionInput"
+
+                    type="text"
+
+                    placeholder="Tell MindMate how you're feeling…"
+
+                    autocomplete="off"
+
+                    required>
+
+                <div class="breath-ring"></div>
+
+                <button
+
+                    id="analyzeBtn"
+
+                    class="send-btn"
+
+                    type="submit">
+
+                    →
+
+                </button>
+
+            </form>
+
+        </section>
+                <!-- ========================================= -->
+        <!-- RIGHT PANEL -->
+        <!-- ========================================= -->
+
+        <aside class="panel">
+
+            <h2 class="panel-title">
+
+                What's working for you
+
+            </h2>
+
+
+            <!-- Grounding -->
+
+            <div class="insight-item">
+
+                <div class="insight-top">
+
+                    <span class="insight-name">
+
+                        Grounding
+
+                    </span>
+
+                    <span
+                        class="insight-score"
+                        id="groundingScore">
+
+                        0.86
+
+                    </span>
+
+                </div>
+
+                <div class="bar-track">
+
+                    <div
+                        class="bar-fill"
+                        id="groundingBar"
+                        style="width:86%;">
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="delta-note"
+                    id="groundingDelta">
+
+                    ↑ 0.06 after today's feedback
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Breathing -->
+
+            <div class="insight-item">
+
+                <div class="insight-top">
+
+                    <span class="insight-name">
+
+                        Breathing
+
+                    </span>
+
+                    <span
+                        class="insight-score"
+                        id="breathingScore">
+
+                        0.71
+
+                    </span>
+
+                </div>
+
+                <div class="bar-track">
+
+                    <div
+                        class="bar-fill mid"
+                        id="breathingBar"
+                        style="width:71%;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Journaling -->
+
+            <div class="insight-item">
+
+                <div class="insight-top">
+
+                    <span class="insight-name">
+
+                        Journaling
+
+                    </span>
+
+                    <span
+                        class="insight-score"
+                        id="journalingScore">
+
+                        0.28
+
+                    </span>
+
+                </div>
+
+                <div class="bar-track">
+
+                    <div
+                        class="bar-fill low"
+                        id="journalingBar"
+                        style="width:28%;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="insight-divider"></div>
+
+
+
+            <div class="trace-title">
+
+                Why this recommendation
+
+            </div>
+
+            <div
+                class="trace-text"
+                id="recommendationReason">
+
+                Anxiety detected at
+                <b>high</b>
+                intensity. Of your past interventions for this state,
+                <b>grounding</b>
+                scored highest (0.86) vs breathing (0.71) and journaling (0.28) — so it was ranked first.
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        MindMate offers wellness support and coping suggestions. It does not diagnose conditions and is not a substitute for a licensed professional or emergency service.
+
+    </footer>
+
+</div>
+
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

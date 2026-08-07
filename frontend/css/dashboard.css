@@ -1,0 +1,1033 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* =======================================
+   ROOT VARIABLES
+======================================= */
+
+:root{
+
+    --bg:#16232B;
+
+    --surface:#1E323C;
+
+    --surface-raised:#24404B;
+
+    --line:rgba(237,242,240,.10);
+
+    --text:#EDF2F0;
+
+    --text-muted:#9FB4AC;
+
+    --sage:#8FBFA8;
+
+    --sage-dim:rgba(143,191,168,.16);
+
+    --clay:#E9A87A;
+
+    --clay-dim:rgba(233,168,122,.16);
+
+    --coral:#E8737A;
+
+    --radius:14px;
+
+}
+
+/* =======================================
+   RESET
+======================================= */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:
+    radial-gradient(
+        120% 100%
+        at 20% 0%,
+        #1A2C34 0%,
+        var(--bg) 55%
+    );
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    line-height:1.5;
+
+    padding:32px;
+
+}
+
+.wrap{
+
+    max-width:1180px;
+
+    margin:auto;
+
+}
+/* =======================================
+   HEADER
+======================================= */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.brand-mark{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle at 35% 30%,
+        var(--sage),
+        rgba(143,191,168,.15) 70%
+    );
+
+    animation:breathe 6s ease-in-out infinite;
+
+}
+
+.brand-name{
+
+    font-family:"Fraunces",serif;
+
+    font-size:23px;
+
+    font-weight:600;
+
+    font-style:italic;
+
+}
+
+.brand-sub{
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.safety-chip{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:var(--sage-dim);
+
+    border:1px solid rgba(143,191,168,.30);
+
+    color:var(--sage);
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+}
+
+.safety-dot{
+
+    width:7px;
+
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--sage);
+
+}
+/* =======================================
+   GRID
+======================================= */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        220px
+
+        1fr
+
+        280px;
+
+    gap:20px;
+
+    align-items:start;
+
+}
+
+@media(max-width:980px){
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.panel{
+
+    background:var(--surface);
+
+    border:1px solid var(--line);
+
+    border-radius:var(--radius);
+
+    padding:20px;
+
+}
+
+.panel-title{
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+    color:var(--text-muted);
+
+    margin-bottom:14px;
+
+    font-weight:600;
+
+}
+/* =======================================
+   LEFT PANEL
+======================================= */
+
+.mood-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:22px;
+
+}
+
+.mood-chip{
+
+    background:var(--surface-raised);
+
+    border:1px solid var(--line);
+
+    border-radius:10px;
+
+    padding:10px;
+
+    color:var(--text-muted);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.mood-chip:hover{
+
+    border-color:var(--sage);
+
+}
+
+.mood-chip.active{
+
+    background:var(--sage-dim);
+
+    color:var(--sage);
+
+    border-color:var(--sage);
+
+}
+
+.history-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:9px 0;
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.history-item:last-child{
+
+    border:none;
+
+}
+
+.history-day{
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+}
+
+.history-tag{
+
+    font-family:"IBM Plex Mono",monospace;
+
+    font-size:11px;
+
+    border-radius:6px;
+
+    padding:3px 8px;
+
+}
+
+.tag-anx{
+
+    background:var(--clay-dim);
+
+    color:var(--clay);
+
+}
+
+.tag-lonely{
+
+    background:rgba(143,169,191,.16);
+
+    color:#8FA9BF;
+
+}
+
+.tag-calm{
+
+    background:var(--sage-dim);
+
+    color:var(--sage);
+
+}
+
+.screening-note{
+
+    margin-top:18px;
+
+    border-top:1px solid var(--line);
+
+    padding-top:15px;
+
+    color:var(--text-muted);
+
+    font-size:11px;
+
+}
+/* =======================================
+   CHAT PANEL
+======================================= */
+
+.chat-panel{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:560px;
+
+}
+
+.chat-scroll{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+/* ================= USER & BOT ================= */
+
+.msg{
+
+    max-width:82%;
+
+}
+
+.msg.user{
+
+    align-self:flex-end;
+
+}
+
+.msg.bot{
+
+    align-self:flex-start;
+
+}
+
+.bubble{
+
+    padding:14px 17px;
+
+    border-radius:15px;
+
+    font-size:14px;
+
+}
+
+.msg.user .bubble{
+
+    background:var(--surface-raised);
+
+    border:1px solid var(--line);
+
+    border-bottom-right-radius:5px;
+
+}
+
+.msg.bot .bubble{
+
+    background:var(--sage-dim);
+
+    border:1px solid rgba(143,191,168,.25);
+
+    border-bottom-left-radius:5px;
+
+}
+
+/* ================= ANALYSIS PILLS ================= */
+
+.analysis-row{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+.pill{
+
+    font-family:"IBM Plex Mono",monospace;
+
+    font-size:11px;
+
+    background:var(--surface-raised);
+
+    border:1px solid var(--line);
+
+    border-radius:999px;
+
+    padding:5px 10px;
+
+    color:var(--text-muted);
+
+}
+
+.pill b{
+
+    color:var(--text);
+
+    font-weight:500;
+
+}
+
+/* ================= RECOMMENDATION CARD ================= */
+
+.rec-card{
+
+    margin-top:14px;
+
+    background:var(--surface-raised);
+
+    border:1px solid var(--line);
+
+    border-radius:14px;
+
+    padding:16px;
+
+}
+
+.rec-label{
+
+    color:var(--clay);
+
+    text-transform:uppercase;
+
+    letter-spacing:.08em;
+
+    font-size:11px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.rec-title{
+
+    font-family:"Fraunces",serif;
+
+    font-size:17px;
+
+    margin-bottom:6px;
+
+}
+
+.rec-desc{
+
+    color:var(--text-muted);
+
+    font-size:13px;
+
+    margin-bottom:15px;
+
+    line-height:1.6;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.rec-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+}
+
+.rec-btn{
+
+    padding:9px 16px;
+
+    border-radius:10px;
+
+    border:1px solid var(--line);
+
+    background:transparent;
+
+    color:var(--text-muted);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.rec-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.rec-btn.primary{
+
+    background:var(--sage);
+
+    color:#16232B;
+
+    border-color:var(--sage);
+
+    font-weight:600;
+
+}
+
+.rec-btn.primary:hover{
+
+    box-shadow:0 0 18px rgba(143,191,168,.25);
+
+}
+
+/* ================= FEEDBACK ================= */
+
+.feedback-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-top:14px;
+
+    color:var(--text-muted);
+
+    font-size:13px;
+
+}
+
+.feedback-btn{
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(143,191,168,.30);
+
+    background:var(--sage-dim);
+
+    color:var(--sage);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.feedback-btn:hover{
+
+    background:var(--sage);
+
+    color:#16232B;
+
+}
+
+/* ================= INPUT ================= */
+
+.chat-input-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:24px;
+
+    padding:8px 8px 8px 18px;
+
+    border-radius:999px;
+
+    border:1px solid var(--line);
+
+    background:var(--surface-raised);
+
+    position:relative;
+
+}
+
+.chat-input-row input{
+
+    flex:1;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    color:var(--text);
+
+    font-size:14px;
+
+}
+
+.chat-input-row input::placeholder{
+
+    color:var(--text-muted);
+
+}
+
+/* ================= BREATH RING ================= */
+
+.breath-ring{
+
+    position:absolute;
+
+    right:56px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    border:1.5px solid var(--sage);
+
+    animation:breathe 4s ease-in-out infinite;
+
+    opacity:.55;
+
+}
+
+/* ================= SEND BUTTON ================= */
+
+.send-btn{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:var(--sage);
+
+    color:#16232B;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transition:.25s;
+
+}
+
+.send-btn:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 0 16px rgba(143,191,168,.30);
+
+}
+
+/* =======================================
+   INSIGHT BARS
+======================================= */
+
+.bar-track{
+
+    height:6px;
+
+    background:var(--surface-raised);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    margin-top:6px;
+
+}
+
+.bar-fill{
+
+    height:100%;
+
+    background:var(--sage);
+
+    border-radius:999px;
+
+}
+
+.bar-fill.mid{
+
+    background:var(--clay);
+
+}
+
+.bar-fill.low{
+
+    background:rgba(159,180,172,.5);
+
+}
+/* =======================================
+   RIGHT PANEL
+======================================= */
+
+.insight-item{
+
+    margin-bottom:18px;
+
+}
+
+.insight-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:8px;
+
+}
+
+.insight-name{
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.insight-score{
+
+    font-family:"IBM Plex Mono",monospace;
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+}
+
+.bar-track{
+
+    height:6px;
+
+    background:var(--surface-raised);
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.bar-fill{
+
+    height:100%;
+
+    background:var(--sage);
+
+    border-radius:999px;
+
+    transition:width .4s ease;
+
+}
+
+.bar-fill.mid{
+
+    background:var(--clay);
+
+}
+
+.bar-fill.low{
+
+    background:rgba(159,180,172,.5);
+
+}
+
+.delta-note{
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    color:var(--sage);
+
+}
+
+.insight-divider{
+
+    height:1px;
+
+    background:var(--line);
+
+    margin:22px 0;
+
+}
+
+.trace-title{
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+    margin-bottom:10px;
+
+}
+
+.trace-text{
+
+    color:var(--text);
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+.trace-text b{
+
+    color:var(--sage);
+
+    font-weight:600;
+
+}
+
+/* =======================================
+   FOOTER
+======================================= */
+
+footer{
+
+    margin-top:28px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--line);
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+    font-size:12px;
+
+}
+
+/* =======================================
+   ANIMATIONS
+======================================= */
+
+@keyframes breathe{
+
+    0%,100%{
+
+        transform:translateY(-50%) scale(.90);
+
+        opacity:.55;
+
+    }
+
+    50%{
+
+        transform:translateY(-50%) scale(1.15);
+
+        opacity:1;
+
+    }
+
+}
+
+.brand-mark{
+
+    animation:breatheLogo 6s ease-in-out infinite;
+
+}
+
+@keyframes breatheLogo{
+
+    0%,100%{
+
+        transform:scale(.90);
+
+        opacity:.60;
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+        opacity:1;
+
+    }
+
+}
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+
+@media(max-width:980px){
+
+    body{
+
+        padding:20px;
+
+    }
+
+    header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .msg{
+
+        max-width:100%;
+
+    }
+
+    .chat-input-row{
+
+        flex-wrap:wrap;
+
+        border-radius:18px;
+
+    }
+
+    .send-btn{
+
+        margin-left:auto;
+
+    }
+
+}

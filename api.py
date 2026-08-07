@@ -13,7 +13,8 @@ from backend.database import (
     save_user_profile,
     get_user_profile,
     save_mood_history,
-    get_mood_history
+    get_mood_history,
+    create_database
 )
 
 
@@ -26,6 +27,7 @@ app = FastAPI(
     description="API for emotion detection and personalised emotional support",
     version="1.0.0"
 )
+create_database()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

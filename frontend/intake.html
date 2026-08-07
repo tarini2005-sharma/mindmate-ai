@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMate | Intake</title>
+
+    <link rel="stylesheet" href="css/intake.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div class="brand">
+
+<div class="brand-mark"></div>
+
+<div>
+
+<h2 class="brand-name"><i>MindMate</i></h2>
+
+<p class="brand-subtitle">
+
+Getting to know you
+
+</p>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<section class="intake-section">
+
+<div class="section-head">
+
+<h5>Step 2 of 2</h5>
+
+<h1>
+
+A few questions before your first check-in
+
+</h1>
+
+<p>
+
+These questions help MindMate personalize recommendations.
+
+They are not a diagnosis and can always be changed later. 
+
+You can skip and answer later.
+
+</p>
+
+</div>
+
+
+
+<div class="progress">
+
+<div class="progress-fill"></div>
+
+</div>
+
+
+
+<form id="intakeForm">
+
+
+
+<!-- ===================== Question 1 ===================== -->
+
+<div class="question-card">
+
+<h4>01</h4>
+
+<h2>
+
+What's mainly bringing you here today?
+
+</h2>
+
+<p>
+
+Sets the starting emotion categories MindMate pays attention to.
+
+
+</p>
+
+
+
+<div class="chip-group">
+
+<button type="button" class="chip">
+
+Anxiety
+
+</button>
+
+<button type="button" class="chip">
+
+Stress
+
+</button>
+
+<button type="button" class="chip">
+
+Low Mood
+
+</button>
+
+<button type="button" class="chip">
+
+Loneliness
+
+</button>
+
+<button type="button" class="chip">
+
+Overthinking
+
+</button>
+
+<button type="button" class="chip">
+
+Sleep Issues
+
+</button>
+
+<button type="button" class="chip">
+
+Just Exploring
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ===================== Question 2 ===================== -->
+
+<div class="question-card">
+
+<h4>02</h4>
+
+<h2>
+
+How would you rate how you've felt over the past two weeks?
+
+</h2>
+
+<p>
+
+A one-time baseline, not a repeated diagnostic test.
+
+</p>
+
+
+
+<div class="rating-group">
+
+<button type="button" class="rating-btn">
+
+1
+
+</button>
+
+<button type="button" class="rating-btn">
+
+2
+
+</button>
+
+<button type="button" class="rating-btn">
+
+3
+
+</button>
+
+<button type="button" class="rating-btn">
+
+4
+
+</button>
+
+<button type="button" class="rating-btn">
+
+5
+
+</button>
+
+</div>
+
+
+
+<div class="rating-labels">
+
+<span>Struggling a lot</span>
+
+<span>Doing well</span>
+
+</div>
+
+</div>
+
+
+
+<!-- ===================== Question 3 ===================== -->
+
+<div class="question-card">
+
+<h4>03</h4>
+
+<h2>
+
+Do you have someone you'd feel comfortable talking to if things got hard?
+
+</h2>
+
+<p>
+
+Shapes whether MindMate suggests reaching out to a person vs. a solo coping activity.
+
+</p>
+
+
+
+<div class="toggle-group">
+
+<button type="button" class="toggle-btn">
+
+Yes, someone
+
+</button>
+
+<button type="button" class="toggle-btn">
+
+Not really
+
+</button>
+
+<button type="button" class="toggle-btn">
+
+Prefer not to say
+
+</button>
+
+</div>
+
+</div>
+<!-- ===================== Question 4 ===================== -->
+
+<div class="question-card">
+
+    <h4>04</h4>
+
+    <h2>
+        Are you currently seeing a therapist, counselor or doctor?
+    </h2>
+
+    <p>
+        Lets MindMate position itself as a supplement, not a substitute, and adjust how it phrases suggestions.
+    </p>
+
+    <div class="toggle-group">
+
+        <button type="button" class="toggle-btn">
+            Yes, currently
+        </button>
+
+        <button type="button" class="toggle-btn">
+            Not right now
+        </button>
+
+        <button type="button" class="toggle-btn">
+            In the past
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================== Question 5 ===================== -->
+
+<div class="question-card">
+
+    <h4>05</h4>
+
+    <h2>
+        What has helped you cope before?
+    </h2>
+
+    <p>
+       Seeds your personalization scores so week one isn't a cold start.
+    </p>
+
+    <textarea
+        id="coping"
+        rows="5"
+        placeholder="For example: going for a walk, music, talking to a friend, journaling..."
+    ></textarea>
+
+</div>
+
+
+
+<!-- ===================== Question 6 ===================== -->
+
+<div class="question-card">
+
+    <h4>06</h4>
+
+    <h2>
+        Would you like to include optional GAD-7 / PHQ-9 screening
+        questionnaires during future check-ins?
+    </h2>
+
+    <p>
+        These are shown only as wellness context and never as a diagnosis.
+    </p>
+
+    <div class="toggle-group">
+
+        <button
+            type="button"
+            class="toggle-btn"
+        >
+            Yes, include them
+        </button>
+
+        <button
+            type="button"
+            class="toggle-btn"
+        >
+            No thanks
+        </button>
+
+    </div>
+
+</div>
+<!-- ===================== Question 7 ===================== -->
+
+<div class="question-card safety-card">
+
+    <h4>07</h4>
+
+    <h2>
+        Have you recently had thoughts of harming yourself?
+    </h2>
+
+    <p>
+        This question is always asked privately so that MindMate can
+        prioritize safety if needed.
+    </p>
+
+    <div class="toggle-group">
+
+        <button type="button" class="toggle-btn danger">
+            Yes
+        </button>
+
+        <button type="button" class="toggle-btn">
+            No
+        </button>
+
+        <button type="button" class="toggle-btn">
+            Prefer not to say
+        </button>
+
+    </div>
+
+    <div class="safety-note">
+
+        If "Yes" is selected, MindMate will immediately display crisis
+        resources before continuing. This information is used only to
+        prioritize your safety.
+
+    </div>
+
+</div>
+
+
+
+<!-- ===================== Question 8 ===================== -->
+
+<div class="question-card">
+
+    <h4>08</h4>
+
+    <h2>
+        Emergency Contact (Optional)
+    </h2>
+
+    <p>
+        If you wish, you can provide someone we may suggest contacting
+        during serious safety concerns.
+    </p>
+
+    <input
+        type="text"
+        id="emergencyContact"
+        placeholder="Name and phone number (optional)"
+    >
+
+</div>
+
+
+
+<!-- ===================== Consent ===================== -->
+
+<div class="question-card consent-card">
+
+    <label class="consent-row">
+
+        <input
+            type="checkbox"
+            id="consent"
+            required
+        >
+
+        <span>
+
+            I understand that MindMate provides wellness support and
+            personalized coping suggestions. It is not a substitute for
+            licensed mental health professionals or emergency services.
+
+        </span>
+
+    </label>
+
+</div>
+
+
+
+<!-- ===================== Footer Buttons ===================== -->
+
+<div class="form-footer">
+
+    <button
+        type="button"
+        class="secondary-btn"
+        id="skipBtn"
+    >
+        Skip For Now
+    </button>
+
+    <button
+        type="submit"
+        class="primary-btn"
+        id="continueBtn"
+    >
+        Start My First Check-In →
+    </button>
+
+</div>
+
+</form>
+
+</section>
+
+
+
+<footer class="page-footer">
+
+    <p>
+
+        Your answers remain private and are only used to personalize
+        your own MindMate experience.
+
+    </p>
+
+</footer>
+
+</div>
+
+<script src="js/intake.js"></script>
+
+</body>
+
+</html>

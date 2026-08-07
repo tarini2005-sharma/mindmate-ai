@@ -1,0 +1,872 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+    --bg:#16232B;
+    --surface:#1E323C;
+    --surface-raised:#24404B;
+
+    --line:rgba(237,242,240,.10);
+
+    --text:#EDF2F0;
+    --text-muted:#9FB4AC;
+
+    --sage:#8FBFA8;
+    --sage-light:#B6D8C6;
+    --sage-dim:rgba(143,191,168,.16);
+
+    --radius:16px;
+
+    --shadow:0 15px 35px rgba(0,0,0,.25);
+
+    --transition:.30s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top left,#223A45 0%,#16232B 55%);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+}
+
+.container{
+
+    width:100%;
+
+    max-width:1200px;
+
+}
+
+.top-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:40px;
+}
+
+.brand-mark{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,var(--sage),rgba(143,191,168,.15));
+
+    animation:breathe 5s infinite ease-in-out;
+}
+
+@keyframes breathe{
+
+0%{
+transform:scale(.85);
+opacity:.6;
+}
+
+50%{
+transform:scale(1.1);
+opacity:1;
+}
+
+100%{
+transform:scale(.85);
+opacity:.6;
+}
+
+}
+
+.brand-name{
+
+font-family:'Fraunces',serif;
+
+font-size:24px;
+
+font-weight:600;
+
+letter-spacing:.5px;
+
+}
+
+.login-wrapper{
+
+display:grid;
+
+grid-template-columns:1.2fr .9fr;
+
+gap:60px;
+
+align-items:center;
+
+}
+
+.left-side h5{
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+font-size:12px;
+
+color:var(--sage);
+
+margin-bottom:18px;
+
+}
+
+.left-side h1{
+
+font-family:'Fraunces',serif;
+
+font-size:46px;
+
+font-weight:500;
+
+line-height:1.2;
+
+margin-bottom:18px;
+
+}
+
+.left-side p{
+
+color:var(--text-muted);
+
+font-size:15px;
+
+line-height:1.8;
+
+max-width:500px;
+
+margin-bottom:28px;
+
+}
+
+.features{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:18px;
+
+}
+
+.feature{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+color:var(--text-muted);
+
+font-size:14px;
+
+}
+
+.feature span{
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:var(--sage);
+
+}
+
+.login-card{
+
+background:var(--surface);
+
+border:1px solid var(--line);
+
+border-radius:22px;
+
+padding:40px;
+
+box-shadow:var(--shadow);
+
+transition:var(--transition);
+
+}
+
+.login-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.login-card h2{
+
+font-family:'Fraunces',serif;
+
+font-size:28px;
+
+font-weight:500;
+
+margin-bottom:8px;
+
+}
+
+.login-card p{
+
+font-size:14px;
+
+color:var(--text-muted);
+
+margin-bottom:28px;
+
+}
+
+.social-btn{
+
+width:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:12px;
+
+padding:13px;
+
+margin-bottom:14px;
+
+background:#fff;
+
+color:#111;
+
+font-weight:600;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.25s;
+
+font-size:14px;
+
+}
+
+.social-btn img{
+
+width:20px;
+
+height:20px;
+
+}
+
+.social-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.apple{
+
+background:#000;
+
+color:#fff;
+
+}
+
+.divider{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin:28px 0;
+
+}
+
+.divider hr{
+
+flex:1;
+
+border:none;
+
+height:1px;
+
+background:var(--line);
+
+}
+
+.divider span{
+
+font-size:12px;
+
+color:var(--text-muted);
+
+}
+
+.form-group{
+
+margin-bottom:18px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-size:13px;
+
+margin-bottom:8px;
+
+color:var(--text-muted);
+
+}
+
+.form-group input{
+
+width:100%;
+
+padding:14px 15px;
+
+background:var(--surface-raised);
+
+border:1px solid transparent;
+
+border-radius:12px;
+
+color:var(--text);
+
+font-size:14px;
+
+outline:none;
+
+transition:var(--transition);
+
+}
+
+.form-group input::placeholder{
+
+color:#7D9891;
+
+}
+
+.form-group input:focus{
+
+border-color:var(--sage);
+
+box-shadow:0 0 0 3px rgba(143,191,168,.15);
+
+}
+/* ===============================
+   BUTTONS
+================================== */
+
+.primary-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--sage);
+
+    color:#10201A;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:all .3s ease;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(143,191,168,.30);
+
+}
+
+.primary-btn:active{
+
+    transform:scale(.98);
+
+}
+
+.primary-btn.loading{
+
+    opacity:.8;
+
+    pointer-events:none;
+
+}
+
+
+/* ===============================
+   EXTRA LINKS
+================================== */
+
+.extra-links{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:18px;
+
+    font-size:13px;
+
+}
+
+.extra-links a{
+
+    color:var(--sage);
+
+    text-decoration:none;
+
+    transition:.25s;
+
+}
+
+.extra-links a:hover{
+
+    color:var(--sage-light);
+
+}
+
+
+/* ===============================
+   SIGNUP TEXT
+================================== */
+
+.signup{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:var(--text-muted);
+
+}
+
+.signup a{
+
+    color:var(--sage);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.signup a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ===============================
+   PRIVACY
+================================== */
+
+.privacy{
+
+    margin-top:24px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    color:var(--text-muted);
+
+    line-height:1.7;
+
+}
+
+
+/* ===============================
+   LOADING SPINNER
+================================== */
+
+.spinner{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.4);
+
+    border-top:2px solid white;
+
+    animation:spin .7s linear infinite;
+
+    display:none;
+
+    margin-left:10px;
+
+}
+
+@keyframes spin{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+
+/* ===============================
+   SHAKE ANIMATION
+================================== */
+
+.shake{
+
+animation:shake .35s;
+
+}
+
+@keyframes shake{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+20%{
+
+transform:translateX(-6px);
+
+}
+
+40%{
+
+transform:translateX(6px);
+
+}
+
+60%{
+
+transform:translateX(-6px);
+
+}
+
+80%{
+
+transform:translateX(6px);
+
+}
+
+100%{
+
+transform:translateX(0);
+
+}
+
+}
+
+
+/* ===============================
+   SUCCESS ANIMATION
+================================== */
+
+.success{
+
+animation:success .5s ease;
+
+}
+
+@keyframes success{
+
+0%{
+
+transform:scale(.9);
+
+}
+
+60%{
+
+transform:scale(1.03);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+
+/* ===============================
+   FOOTER
+================================== */
+
+footer{
+
+    margin-top:45px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    color:var(--text-muted);
+
+    line-height:1.8;
+
+}
+
+footer a{
+
+    color:var(--sage);
+
+    text-decoration:none;
+
+}
+
+footer a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ===============================
+   RESPONSIVE
+================================== */
+
+@media(max-width:1100px){
+
+.login-wrapper{
+
+grid-template-columns:1fr;
+
+gap:45px;
+
+}
+
+.left-side{
+
+text-align:center;
+
+}
+
+.left-side p{
+
+margin:auto;
+
+margin-bottom:30px;
+
+}
+
+.features{
+
+justify-content:center;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+body{
+
+padding:20px;
+
+}
+
+.login-card{
+
+padding:30px;
+
+}
+
+.left-side h1{
+
+font-size:34px;
+
+}
+
+.brand-name{
+
+font-size:21px;
+
+}
+
+}
+
+
+@media(max-width:520px){
+
+.login-card{
+
+padding:24px;
+
+}
+
+.left-side h1{
+
+font-size:28px;
+
+}
+
+.social-btn{
+
+font-size:13px;
+
+padding:12px;
+
+}
+
+.form-group input{
+
+padding:13px;
+
+}
+
+.primary-btn{
+
+padding:13px;
+
+}
+
+.extra-links{
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+}
+
+
+/* ===============================
+   SMALL POLISH
+================================== */
+
+::selection{
+
+background:var(--sage);
+
+color:#10201A;
+
+}
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#3A5966;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#16232B;
+
+}
+
+.fade-in{
+
+animation:fadeIn .7s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.hidden{
+
+display:none;
+
+}
+
+.show{
+
+display:block;
+
+}
