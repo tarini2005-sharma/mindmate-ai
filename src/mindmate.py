@@ -1,5 +1,7 @@
 from src.emotion_predictor import predict_emotion
 from src.recommendation_engine import get_recommendation
+from src.safety_layer import check_safety
+CONFIDENCE_THRESHOLD = 0.50
 
 
 def analyze_message(text):
@@ -7,10 +9,26 @@ def analyze_message(text):
     Analyze a user's message and return
     an emotion and supportive recommendation.
     """
+    safety_result = check_safety(text)
+
+    if safety_result["risk_detected"]:
+        return {
+        "text": text,
+        "emotion": "high_risk",
+        "confidence": 1.0,
+        "safety": safety_result,
+        "message": (
+            "I'm really sorry you're going through this. "
+            "You deserve immediate support. Please reach out to "
+            "someone you trust or a local emergency or crisis "
+            "support service right now."
+        ),
+        "activities": []
+    }
 
     emotion, confidence = predict_emotion(text)
 
-    confidence_threshold = 0.40
+    confidence_threshold = CONFIDENCE_THRESHOLD
 
     if confidence < confidence_threshold:
         return {

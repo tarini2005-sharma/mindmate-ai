@@ -22,6 +22,18 @@ RECOMMENDATIONS = {
             "Write down how you are feeling"
         ]
     },
+    "grief_loss": {
+        "message": (
+            "It sounds like you may be going through a difficult experience "
+            "of loss or grief. Be gentle with yourself and take things one "
+            "moment at a time."
+    ),
+        "activities": [
+            "Talk to someone you trust about how you are feeling",
+            "Write down what you are missing or thinking about",
+            "Take a quiet walk or spend some time in a comforting place"
+        ]   
+    },
 
     "anger_frustration": {
         "message": (
